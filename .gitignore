@@ -1,0 +1,61 @@
+# Python cache and artifacts
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.dylib
+*.egg-info/
+.eggs/
+.python-version
+
+# Virtual environments and local env files
+.env
+.env.local
+.env.*
+.venv/
+venv/
+env/
+ENV/
+*.pem
+*.key
+*.crt
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IDE / Editor
+.vscode/
+.idea/
+*.code-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Build / tooling caches
+build/
+dist/
+.cache/
+.pytest_cache/
+
+# Project data artifacts (not for VCS)
+data/raw/
+data/temp/
+data/clean/
+*.csv
+*.parquet
+
+# Reports (generated locally)
+reports/
+
+# Logs
+logs/
+*.log
+
+# Notes
+notes/
+
+# Notebooks
+notebooks/
