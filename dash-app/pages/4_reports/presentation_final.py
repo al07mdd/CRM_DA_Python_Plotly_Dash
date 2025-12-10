@@ -1,4 +1,5 @@
 from dash import html, register_page, callback, Input, Output
+from .sidebar import get_sidebar
 
 
 register_page(
@@ -32,8 +33,6 @@ def _slide(title: str, paragraphs: list[str], image_name: str | None = None) -> 
 
 
 def layout():
-    from .sidebar import get_sidebar
-
     slides = [
         _slide(
             "Контекст и цель проекта",

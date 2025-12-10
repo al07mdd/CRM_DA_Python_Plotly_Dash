@@ -1,4 +1,5 @@
 from dash import dcc, html, register_page, callback, Input, Output
+from .sidebar import get_sidebar
 
 
 register_page(
@@ -147,8 +148,6 @@ REPORT_MD = """
 
 
 def layout():
-    from .sidebar import get_sidebar
-
     return html.Div(
         style={"display": "flex", "gap": "16px"},
         children=[
