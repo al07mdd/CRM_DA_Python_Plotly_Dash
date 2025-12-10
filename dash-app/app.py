@@ -65,6 +65,7 @@ app = Dash(
 app.layout = html.Div(
     [
         dcc.Location(id="url"),
+        dcc.Store(id="app-lang", storage_type="session", data="ru"),
         html.Header(
             [
                 html.Div(
@@ -117,6 +118,39 @@ def _highlight_top_section(pathname: str | None) -> str:
     except Exception:
         pass
     return base
+
+
+def _top_nav_links_en() -> html.Nav:
+    return html.Nav(
+        [
+            dcc.Link("1️⃣ DATA", href="/data/import", className="tab"),
+            dcc.Link("2️⃣ VISUALIZATIONS", href="/viz/timeseries", className="tab"),
+            dcc.Link("3️⃣ PRODUCT ANALYTICS", href="/product/unit-economics", className="tab"),
+            dcc.Link("4️⃣ REPORTS", href="/reports/full", className="tab"),
+        ],
+    )
+
+
+def _top_nav_links_de() -> html.Nav:
+    return html.Nav(
+        [
+            dcc.Link("1️⃣ DATEN", href="/data/import", className="tab"),
+            dcc.Link("2️⃣ VISUALISIERUNGEN", href="/viz/timeseries", className="tab"),
+            dcc.Link("3️⃣ PRODUKTANALYTIK", href="/product/unit-economics", className="tab"),
+            dcc.Link("4️⃣ BERICHTE", href="/reports/full", className="tab"),
+        ],
+    )
+
+
+@callback(Output("top-nav", "children"), Input("app-lang", "data"))
+def _update_top_nav(lang_value: str | None):
+    lang = lang_value or "ru"
+    if lang == "en":
+        return _top_nav_links_en()
+    if lang == "de":
+        return _top_nav_links_de()
+    # Russian or unknown: keep original nav
+    return top_nav()
 
 
 if __name__ == "__main__":
